@@ -102,7 +102,7 @@ for frame in camera.capture_continuous(raw_capture, format="bgr", use_video_port
 
     # Draw the bounding box
     # cnt = contours[max_index]
-    print(areas)
+    print(absolute_difference)
     # x,y,w,h = cv2.boundingRect(cnt)
     # cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),3)
     #
