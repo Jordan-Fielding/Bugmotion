@@ -98,11 +98,11 @@ for frame in camera.capture_continuous(raw_capture, format="bgr", use_video_port
     else:
 
         # Find the largest moving object in the image
-        max_index = np.argmax(areas)
+        # max_index = np.argmax(areas)
 
     # Draw the bounding box
     # cnt = contours[max_index]
-    print(max_index)
+    print(areas)
     # x,y,w,h = cv2.boundingRect(cnt)
     # cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),3)
     #
