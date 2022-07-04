@@ -101,11 +101,11 @@ for frame in camera.capture_continuous(raw_capture, format="bgr", use_video_port
         max_index = np.argmax(areas)
 
     # Draw the bounding box
-    cnt = contours[max_index]
-    print(cnt)
+    # cnt = contours[max_index]
+    print(max_index)
     # x,y,w,h = cv2.boundingRect(cnt)
     # cv2.rectangle(image,(x,y),(x+w,y+h),(0,255,0),3)
-    # 
+    #
     # # Draw circle in the center of the bounding box
     # x2 = x + int(w/2)
     # y2 = y + int(h/2)
