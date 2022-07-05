@@ -22,7 +22,7 @@ while True:
     #Waits for Motion from PIR Sensor
     pir.wait_for_motion()
 
-    print("Bug detected")
+    print("\nBug detected!")
 
     #Turns on the LED Flash
     GPIO.output(22, 1)
@@ -47,6 +47,8 @@ while True:
 
     #Used to turn off the LED
     GPIO.output(22, 0)
+    
+    print("\nBug Not Detected! -  System Ready! ")
 
 
 
