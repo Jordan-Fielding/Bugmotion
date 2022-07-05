@@ -8,11 +8,11 @@ pir = MotionSensor(4)
 camera = PiCamera()                     #Camera Initialization
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
-GPIO.setup(22, GPIO.OUT)
+GPIO.setup(22, GPIO.OUT)                #LED output pin
 
-cwd = os.getcwd()
+cwd = os.getcwd()                       #Sets the Current Working Directory
 
-#LED output pin
+
 
 
 #To stabilize sensor and Camera
@@ -27,9 +27,10 @@ while True:
     #Turns on the LED Flash
     GPIO.output(22, 1)
 
-    #Sets Img path and filename, Saves to USB Connected
-    print("File will be Saved in: " + cwd)
-    file_name = cwd +"/Capture_" + str(time.time()) + ".jpg"
+    #Sets Img path and filename, Saves to Working directory of Script
+    print("File will be Saved in: " + cwd + "/Pictures")
+    file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
+    print("File Name is: " + file_name)
 
 
     #Used to wait for 0.1 Seconds for Camera to be ready
