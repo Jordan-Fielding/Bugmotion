@@ -1,31 +1,30 @@
-import RPi.GPIO as GPIO
-import time
-from picamera import PiCamera
+import RPi.GPIO as GPIO #Used to Import the LED
+import time #Used to allow wait times
+from picamera import PiCamera #Used to import the Camera
+from gpiozero import MotionSensor #Used to import the MotionSensor
 
-camera = PiCamera()
+pir = MotionSensor(4)
+camera = PiCamera() #Camera Initialization
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.IN)         #Read output from PIR motion sensor
-GPIO.setup(13, GPIO.OUT)         #LED output pin
+GPIO.setmode(GPIO.BCM) #Setting the GPIO Mode
+GPIO.setup(22, GPIO.OUT) #LED output pin
 
-i=GPIO.input(11)
 
-time.sleep(2) # to stabilize sensor
+
+time.sleep(2) # to stabilize sensor and Camera
 while True:
-    #ts = time.time()
-    #st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d_%H:%M:%S')
-    if i==0:                 #When output from motion sensor is LOW
-        print ("No bugs detected",i)
-        GPIO.output(13, 0)  #Turn OFF LED
-        time.sleep(2)
-    if i==1:               #When output from motion sensor is HIGH
-        print("bugs detected",i)
-        GPIO.output(13, 1)  #Turn ON LED
-        camera.capture('/home/pi/Pictures/img.jpg')
-        print("Photo Saved")
-        #os.system('libcamera-jpeg -o /home/pi/Pictures/image_Time_{}.jpg'.format(st))
-        camera.close()  #Capture an Image
-        time.sleep(2)
+
+    pir.wait_for_motion()
+    print("Bug detected")
+    GPIO.output(22, 1)
+    file_name = "/home/qldcomp/Pictures/img_" + str(time.time()) + ".jpg"
+    camera.capture_sequence(file_name)
+    pir.wait_for_no_motion()
+    time.sleep(1)
+    GPIO.output(22, 0)
+    print("Bug Not Detected")
+
+
 
 
 
