@@ -1,27 +1,45 @@
-import RPi.GPIO as GPIO #Used to Import the LED
-import time #Used to allow wait times
-from picamera import PiCamera #Used to import the Camera
-from gpiozero import MotionSensor #Used to import the MotionSensor
+import RPi.GPIO as GPIO                 #Used to Import the LED
+import time                             #Used to allow wait times
+from picamera import PiCamera           #Used to import the Camera
+from gpiozero import MotionSensor       #Used to import the MotionSensor
 
 pir = MotionSensor(4)
-camera = PiCamera() #Camera Initialization
+camera = PiCamera()                     #Camera Initialization
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM) #Setting the GPIO Mode
-GPIO.setup(22, GPIO.OUT) #LED output pin
+GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
+GPIO.setup(22, GPIO.OUT)                #LED output pin
 
 
-
-time.sleep(2) # to stabilize sensor and Camera
+#To stabilize sensor and Camera
+time.sleep(2)
 while True:
 
+    #Waits for Motion from PIR Sensor
     pir.wait_for_motion()
+
     print("Bug detected")
+
+    #Turns on the LED Flash
     GPIO.output(22, 1)
-    file_name = "/home/qldcomp/Pictures/img_" + str(time.time()) + ".jpg"
-    camera.capture_sequence(file_name)
+
+    #Sets Img path and filename, Saves to USB Connected
+    file_name = "/media/Capture_" + str(time.time()) + ".jpg"
+
+    #Used to wait for 0.1 Seconds for Camera to be ready
+    time.sleep(0.1)
+
+    #Saves File
+    camera.capture(file_name)
+
+    #Sets PIR Sensor back to waiting for motion
     pir.wait_for_no_motion()
-    time.sleep(1)
+
+    #Used to turn off the LED after 0.2 Secs
+    time.sleep(0.2)
+
+    #Used to turn off the LED
     GPIO.output(22, 0)
+
     print("Bug Not Detected")
 
 
