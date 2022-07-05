@@ -28,9 +28,9 @@ while True:
     GPIO.output(22, 1)
 
     #Sets Img path and filename, Saves to Working directory of Script
-    print("File will be Saved in: " + cwd + "/Pictures")
+    print("\nFile will be Saved in: " + cwd + "/Pictures")
     file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
-    print("File Name is: " + file_name)
+    print("\nFile Name is: " + file_name)
 
 
     #Used to wait for 0.1 Seconds for Camera to be ready
@@ -47,8 +47,6 @@ while True:
 
     #Used to turn off the LED
     GPIO.output(22, 0)
-
-    print("Bug Not Detected")
 
 
 
