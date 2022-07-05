@@ -29,7 +29,7 @@ while True:
 
     #Sets Img path and filename, Saves to USB Connected
     print("File will be Saved in: " + cwd)
-    file_name = cwd + str(time.time()) + ".jpg"
+    file_name = cwd +"/Capture_" + str(time.time()) + ".jpg"
 
 
     #Used to wait for 0.1 Seconds for Camera to be ready
