@@ -13,7 +13,7 @@ GPIO.setup(22, GPIO.OUT)                #LED output pin
 cwd = os.getcwd()                       #Sets the Current Working Directory
 
 
-
+print("Program Running!")
 
 #To stabilize sensor and Camera
 time.sleep(2)
@@ -22,13 +22,12 @@ while True:
     #Waits for Motion from PIR Sensor
     pir.wait_for_motion()
 
-    print("\nBug detected!")
+    print("\nBug detected")
 
     #Turns on the LED Flash
     GPIO.output(22, 1)
 
     #Sets Img path and filename, Saves to Working directory of Script
-    print("\nFile will be Saved in: " + cwd + "/Pictures")
     file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
     print("\nFile Name is: " + file_name)
 
@@ -47,8 +46,6 @@ while True:
 
     #Used to turn off the LED
     GPIO.output(22, 0)
-    
-    print("\nBug Not Detected! -  System Ready! ")
 
 
 
