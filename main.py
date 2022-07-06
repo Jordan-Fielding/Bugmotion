@@ -13,7 +13,7 @@ GPIO.setup(22, GPIO.OUT)                #LED output pin
 cwd = os.getcwd()                       #Sets the Current Working Directory
 
 
-
+print("Program Running!")
 
 #To stabilize sensor and Camera
 time.sleep(2)
