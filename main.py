@@ -22,13 +22,12 @@ while True:
     #Waits for Motion from PIR Sensor
     pir.wait_for_motion()
 
-    print("Bug detected")
+    print("\nBug detected")
 
     #Turns on the LED Flash
     GPIO.output(22, 1)
 
     #Sets Img path and filename, Saves to Working directory of Script
-    print("\nFile will be Saved in: " + cwd + "/Pictures")
     file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
     print("\nFile Name is: " + file_name)
 
