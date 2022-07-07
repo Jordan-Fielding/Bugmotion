@@ -2,6 +2,8 @@ import RPi.GPIO as GPIO                 #Used to Import the LED
 import time                             #Used to allow wait times
 from picamera import PiCamera           #Used to import the Camera
 from gpiozero import MotionSensor       #Used to import the MotionSensor
+from datetime import datetime
+from subprocess import call
 import os
 
 pir = MotionSensor(4)
@@ -11,6 +13,7 @@ GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
 GPIO.setup(22, GPIO.OUT)                #LED output pin
 
 cwd = os.getcwd()                       #Sets the Current Working Directory
+
 
 
 
@@ -32,6 +35,11 @@ def bugmotion():
         GPIO.output(22, 1)
 
         #Sets Img path and filename, Saves to Working directory of Script
+        # Grab the current time
+        currentTime = datetime.now()
+        picTime = currentTime.strftime("%Y.%m.%d-%H%M%S")
+        picName = picTime + '.jpg'
+        completeFilePath = filePath + picName
         file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
         print("\nFile Name is: " + file_name)
 
@@ -40,7 +48,7 @@ def bugmotion():
         time.sleep(0.1)
 
         #Saves File
-        camera.capture(file_name)
+        camera.capture(completeFilePath)
 
         #Sets PIR Sensor back to waiting for motion
         print("\nWaiting for no Motion!")
