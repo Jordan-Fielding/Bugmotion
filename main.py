@@ -36,7 +36,7 @@ def bugmotion():
 
         #Sets Img path and filename, Saves to Working directory of Script
         # Grab the current time
-        filePath = cwd + "/Pictures"
+        filePath = cwd + "/Pictures/"
         currentTime = datetime.now()
         picTime = currentTime.strftime("%Y.%m.%d-%H%M")
         picName = "Capture-" + picTime + '-.jpg'
