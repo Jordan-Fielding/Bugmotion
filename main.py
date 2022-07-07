@@ -38,8 +38,8 @@ def bugmotion():
         # Grab the current time
         filePath = cwd + "/Pictures"
         currentTime = datetime.now()
-        picTime = currentTime.strftime("%Y.%m.%d-%H%M%S")
-        picName = "Capture" + picTime + '.jpg'
+        picTime = currentTime.strftime("%Y.%m.%d-%H%M")
+        picName = "Capture-" + picTime + '-.jpg'
         completeFilePath = filePath + picName
         #file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
         print("\nFile Name is: " + completeFilePath)
