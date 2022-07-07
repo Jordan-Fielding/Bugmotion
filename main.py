@@ -15,6 +15,8 @@ cwd = os.getcwd()                       #Sets the Current Working Directory
 
 
 def bugmotion():
+    GPIO.output(22, 0) #Sets light off
+
     print("\nProgram Running!")
 
     #To stabilize sensor and Camera
