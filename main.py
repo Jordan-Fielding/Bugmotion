@@ -39,6 +39,7 @@ while True:
     camera.capture(file_name)
 
     #Sets PIR Sensor back to waiting for motion
+    print("\nWaiting for no Motion!")
     pir.wait_for_no_motion()
 
     #Used to turn off the LED after 0.2 Secs
