@@ -56,7 +56,12 @@ def bugmotion():
         time.sleep(2)
         print("\nSystem Ready!")
 
+def exit_handler():
+    print('Program Shutting Down!')
+    GPIO.output(22, 0) # turns off LED
+
 bugmotion() #Starts Program
+atexit.register(exit_handler)
 
 
 
