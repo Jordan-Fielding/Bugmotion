@@ -54,7 +54,7 @@ def bugmotion():
         time.sleep(2)
         print("\nSystem Ready!")
 
-
+bugmotion() #Starts Program
 
 
 
