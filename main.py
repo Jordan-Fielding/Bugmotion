@@ -22,12 +22,12 @@ def bugmotion():
     GPIO.output(22, 0) #Sets light off
 
     print("\nProgram Running!")
-    for i in range(5):
+    for i in range(3):
         time.sleep(1)
         GPIO.output(27, 1)
         time.sleep(1)
         GPIO.output(27, 0)
-        if i == 5:
+        if i == 3:
             break
 
 
