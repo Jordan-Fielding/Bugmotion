@@ -10,7 +10,8 @@ pir = MotionSensor(4)
 camera = PiCamera()                     #Camera Initialization
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
-GPIO.setup(22, GPIO.OUT)                #LED output pin
+GPIO.setup(22, GPIO.OUT)                #LED Flash Output
+GPIO.setup(27, GPIO.OUT)                            #LED indicator output
 
 cwd = os.getcwd()                       #Sets the Current Working Directory
 
@@ -21,6 +22,13 @@ def bugmotion():
     GPIO.output(22, 0) #Sets light off
 
     print("\nProgram Running!")
+    for i in range(5):
+        GPIO.output(27, 1)
+        time.sleep(0.2)
+        GPIO.output(27, 0)
+        if i == 5:
+            break
+
 
     #To stabilize sensor and Camera
     time.sleep(2)
