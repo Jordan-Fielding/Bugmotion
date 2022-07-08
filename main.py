@@ -23,8 +23,9 @@ def bugmotion():
 
     print("\nProgram Running!")
     for i in range(5):
+        time.sleep(1)
         GPIO.output(27, 1)
-        time.sleep(0.2)
+        time.sleep(1)
         GPIO.output(27, 0)
         if i == 5:
             break
