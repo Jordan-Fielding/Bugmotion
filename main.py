@@ -11,7 +11,7 @@ camera = PiCamera()                     #Camera Initialization
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
 GPIO.setup(22, GPIO.OUT)                #LED Flash Output
-GPIO.setup(27, GPIO.OUT)                            #LED indicator output
+GPIO.setup(27, GPIO.OUT)                #LED indicator output
 
 cwd = os.getcwd()                       #Sets the Current Working Directory
 
@@ -22,11 +22,12 @@ def bugmotion():
     GPIO.output(22, 0) #Sets light off
 
     print("\nProgram Running!")
-    for i in range(5):
+    for i in range(3):
+        time.sleep(1)
         GPIO.output(27, 1)
-        time.sleep(0.2)
+        time.sleep(1)
         GPIO.output(27, 0)
-        if i == 5:
+        if i == 3:
             break
 
 
@@ -46,7 +47,7 @@ def bugmotion():
         # Grab the current time
         filePath = cwd + "/Pictures/"
         currentTime = datetime.now()
-        picTime = currentTime.strftime("%Y.%m.%d-%H%M")
+        picTime = currentTime.strftime("%Y-%m-%d-%H-%M-%S")
         picName = "Capture-" + picTime + '.jpg'
         completeFilePath = filePath + picName
         #file_name = cwd + "/Pictures/Capture_" + str(time.time()) + ".jpg"
