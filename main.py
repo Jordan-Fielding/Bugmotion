@@ -1,12 +1,12 @@
 import RPi.GPIO as GPIO                 #Used to Import the LED
 import time                             #Used to allow wait times
 from picamera import PiCamera           #Used to import the Camera
-from gpiozero import MotionSensor       #Used to import the MotionSensor
+
 from datetime import datetime
-from subprocess import call
+
 import os
 
-pir = MotionSensor(4)
+
 camera = PiCamera()                     #Camera Initialization
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)                  #Setting the GPIO Mode
@@ -31,14 +31,9 @@ def bugmotion():
             break
 
 
-    #To stabilize sensor and Camera
+    #To stabilize the Camera
     time.sleep(2)
     while True:
-
-        #Waits for Motion from PIR Sensor
-        pir.wait_for_motion()
-
-        print("\nBug detected")
 
         #Turns on the LED Flash
         GPIO.output(22, 1)
@@ -60,19 +55,15 @@ def bugmotion():
         #Saves File
         camera.capture(completeFilePath)
 
-        #Sets PIR Sensor back to waiting for motion
-        print("\nWaiting for no Motion!")
-        pir.wait_for_no_motion()
-
         #Used to turn off the LED after 0.2 Secs
         time.sleep(0.2)
 
         #Used to turn off the LED
         GPIO.output(22, 0)
 
-        #Used to stabilize Sensor and allow the Camera to refocus
-        time.sleep(2)
-        print("\nSystem Ready!")
+        #Used to wait 5 minutes for camera to take a photo
+        time.sleep(300)
+        print("\nTaking photo!")
 
 def exit_handler():
     print('Program Shutting Down!')
