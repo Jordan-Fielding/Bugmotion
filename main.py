@@ -62,7 +62,7 @@ def bugmotion():
         GPIO.output(22, 0)
 
         #Used to wait 5 minutes for camera to take a photo
-        time.sleep(300)
+        time.sleep(900)
         print("\nTaking photo!")
 
 def exit_handler():
