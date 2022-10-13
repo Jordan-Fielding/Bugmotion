@@ -49,9 +49,15 @@ def bugmotion():
         print("\nFile Name is: " + completeFilePath)
 
 
-        #Used to wait for 0.1 Seconds for Camera to be ready
-        time.sleep(0.1)
+        #Used to wait for 2 Minutes to take Photo 1
+        time.sleep(120)
 
+        #Saves File
+        camera.capture(completeFilePath)
+        
+        #Used to wait for 2 Minutes to take Photo 2
+        time.sleep(120)
+        
         #Saves File
         camera.capture(completeFilePath)
 
@@ -61,9 +67,9 @@ def bugmotion():
         #Used to turn off the LED
         GPIO.output(22, 0)
 
-        #Used to wait 5 minutes for camera to take a photo
-        time.sleep(900)
-        print("\nTaking photo!")
+        #Used to wait 10 minutes for to save power 
+        time.sleep(1800)
+        
 
 def exit_handler():
     print('Program Shutting Down!')
