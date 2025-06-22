@@ -5,6 +5,7 @@ from gpiozero import MotionSensor       #Used to import the MotionSensor
 from datetime import datetime
 from subprocess import call
 import os
+import atexit
 
 pir = MotionSensor(4)
 camera = PiCamera()                     #Camera Initialization
@@ -22,13 +23,11 @@ def bugmotion():
     GPIO.output(22, 0) #Sets light off
 
     print("\nProgram Running!")
-    for i in range(3):
+    for _ in range(3):
         time.sleep(1)
         GPIO.output(27, 1)
         time.sleep(1)
         GPIO.output(27, 0)
-        if i == 3:
-            break
 
 
     #To stabilize sensor and Camera
@@ -78,8 +77,9 @@ def exit_handler():
     print('Program Shutting Down!')
     GPIO.output(22, 0) # turns off LED
 
-bugmotion() #Starts Program
-atexit.register(exit_handler)
+if __name__ == "__main__":
+    atexit.register(exit_handler)
+    bugmotion()  # Starts Program
 
 
 
